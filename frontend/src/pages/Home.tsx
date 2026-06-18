@@ -96,7 +96,7 @@ Download Resume
 
 <a
 
-href="https://github.com/Github-s1u2k3"
+href="https://github.com/s1u2k3"
 
 target="_blank"
 

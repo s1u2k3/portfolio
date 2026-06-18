@@ -1,5 +1,10 @@
 import axios from "axios";
 
-export default axios.create({
-  baseURL: "http://localhost:8080/api",
+const api = axios.create({
+
+baseURL:
+"https://portfolio-backend-tdcs.onrender.com/api"
+
 });
+
+export default api;
