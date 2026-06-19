@@ -15,7 +15,7 @@ function Footer() {
 
         <div className="social-links">
           <a
-            href="https://github.com/Github-s1u2k3"
+            href="https://github.com/s1u2k3"
             target="_blank"
             rel="noreferrer"
           >
