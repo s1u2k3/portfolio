@@ -10,7 +10,7 @@ import com.example.demo.service.ContactService;
 
 @RestController
 @RequestMapping("/api/contact")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://portfolio-gamma-blush-66.vercel.app/")
 public class ContactController {
 
     @Autowired
