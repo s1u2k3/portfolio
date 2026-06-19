@@ -27,9 +27,11 @@ function Contact() {
 
     try{
 
-      await api.post("/contact",form);
+      const response = await api.post("/contact", form);
 
-      setStatus("✅ Message Sent Successfully");
+console.log(response.data);
+
+setStatus("✅ Message Sent Successfully");
 
       setForm({
         name:"",
@@ -39,12 +41,13 @@ function Contact() {
 
     }
 
-    catch{
+    catch(error){
 
-      setStatus("❌ Failed to send message");
+  console.log(error);
 
-    }
+  setStatus("❌ Failed to send message");
 
+}
   };
 
   return(

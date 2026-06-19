@@ -19,23 +19,33 @@ public class EmailService {
 
             String message
 
-    ){
+    ) {
 
-        try{
+        try {
 
             SimpleMailMessage mail
                     = new SimpleMailMessage();
 
-            mail.setTo(
+            // Sender Gmail
 
+            mail.setFrom(
                     "bsukhendu48@gmail.com"
+            );
 
+            // Your Gmail where messages will arrive
+
+            mail.setTo(
+                    "bsukhendu48@gmail.com"
+            );
+
+            // So you can directly reply to visitor
+
+            mail.setReplyTo(
+                    email
             );
 
             mail.setSubject(
-
-                    "New Contact Form Message"
-
+                    "📩 New Contact Form Message"
             );
 
             mail.setText(
@@ -44,7 +54,7 @@ public class EmailService {
 
                     + name
 
-                    + "\nEmail : "
+                    + "\n\nEmail : "
 
                     + email
 
@@ -57,19 +67,35 @@ public class EmailService {
             mailSender.send(mail);
 
             System.out.println(
+                    "================================"
+            );
 
+            System.out.println(
                     "EMAIL SENT SUCCESSFULLY"
+            );
 
+            System.out.println(
+                    "================================"
             );
 
         }
 
-        catch(Exception e){
+        catch (Exception e) {
 
             System.out.println(
+                    "================================"
+            );
 
+            System.out.println(
                     "EMAIL ERROR"
+            );
 
+            System.out.println(
+                    e.getMessage()
+            );
+
+            System.out.println(
+                    "================================"
             );
 
             e.printStackTrace();
