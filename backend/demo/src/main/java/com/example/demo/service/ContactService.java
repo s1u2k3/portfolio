@@ -1,55 +1,64 @@
 package com.example.demo.service;
 
 import java.time.LocalDateTime;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Contact;
+
 import com.example.demo.repository.ContactRepository;
 
 @Service
+
 public class ContactService {
 
     @Autowired
+
     private ContactRepository repository;
 
     @Autowired
+
     private EmailService emailService;
 
 
-    // Save Message
+    public Contact saveContact(
 
-    public Contact saveContact(Contact contact){
+            Contact contact
 
-contact.setCreatedAt(
+    ){
 
-LocalDateTime.now()
+        contact.setCreatedAt(
 
-);
-contact.setRead(false);
+                LocalDateTime.now()
 
-Contact saved=
+        );
 
-repository.save(contact);
+        contact.setRead(false);
 
-emailService.sendEmail(
+        Contact saved =
 
-contact.getName(),
-
-contact.getEmail(),
-
-contact.getMessage()
-
-);
-
-return saved;
-
-}
+                repository.save(contact);
 
 
-    // Get All Messages
+        emailService.sendEmail(
+
+                contact.getName(),
+
+                contact.getEmail(),
+
+                contact.getMessage()
+
+        );
+
+        return saved;
+
+    }
+
+
 
     public List<Contact> getAllContacts() {
 
@@ -59,32 +68,36 @@ return saved;
 
 
 
-    // Delete Message
+    public void deleteContact(
 
-    public void deleteContact(String id) {
+            String id
+
+    ) {
 
         repository.deleteById(id);
 
     }
 
+
+
     public Contact markAsRead(
 
-String id
+            String id
 
-){
+    ){
 
-Contact contact=
+        Contact contact=
 
-repository
+                repository
 
-.findById(id)
+                        .findById(id)
 
-.orElseThrow();
+                        .orElseThrow();
 
-contact.setRead(true);
+        contact.setRead(true);
 
-return repository.save(contact);
+        return repository.save(contact);
 
-}
+    }
 
 }
