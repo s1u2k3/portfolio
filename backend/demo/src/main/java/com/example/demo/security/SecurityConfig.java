@@ -16,11 +16,9 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 @Configuration
-
 public class SecurityConfig {
 
     @Bean
-
     public SecurityFilterChain securityFilterChain(
 
             HttpSecurity http
@@ -71,26 +69,16 @@ public class SecurityConfig {
 
 
     @Bean
-
     public CorsConfigurationSource
+    corsConfigurationSource() {
 
-    corsConfigurationSource(){
+        CorsConfiguration configuration
 
-        CorsConfiguration
+                = new CorsConfiguration();
 
-        configuration
+        configuration.setAllowedOriginPatterns(
 
-        = new CorsConfiguration();
-
-        configuration.setAllowedOrigins(
-
-                List.of(
-
-                        "http://localhost:5173",
-
-                        "https://YOUR-VERCEL-URL.vercel.app"
-
-                )
+                List.of("*")
 
         );
 
@@ -118,15 +106,12 @@ public class SecurityConfig {
 
         );
 
-        configuration
+        configuration.setAllowCredentials(false);
 
-        .setAllowCredentials(true);
 
-        UrlBasedCorsConfigurationSource
+        UrlBasedCorsConfigurationSource source
 
-        source
-
-        = new UrlBasedCorsConfigurationSource();
+                = new UrlBasedCorsConfigurationSource();
 
         source.registerCorsConfiguration(
 

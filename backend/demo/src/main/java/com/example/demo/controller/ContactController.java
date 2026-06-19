@@ -10,29 +10,36 @@ import com.example.demo.service.ContactService;
 
 @RestController
 @RequestMapping("/api/contact")
-@CrossOrigin(origins = "https://portfolio-gamma-blush-66.vercel.app/")
 public class ContactController {
 
     @Autowired
     private ContactService service;
 
-    // Save Contact Message
 
     @PostMapping
     public Contact saveContact(
             @RequestBody Contact contact) {
 
         System.out.println("================================");
-        System.out.println("Name: " + contact.getName());
-        System.out.println("Email: " + contact.getEmail());
-        System.out.println("Message: " + contact.getMessage());
+
+        System.out.println(
+                "Name: " + contact.getName()
+        );
+
+        System.out.println(
+                "Email: " + contact.getEmail()
+        );
+
+        System.out.println(
+                "Message: " + contact.getMessage()
+        );
+
         System.out.println("================================");
 
         return service.saveContact(contact);
+
     }
 
-
-    // Get All Messages
 
     @GetMapping
     public List<Contact> getAllContacts() {
@@ -41,8 +48,6 @@ public class ContactController {
 
     }
 
-
-    // Delete Message
 
     @DeleteMapping("/{id}")
     public void deleteContact(
@@ -55,13 +60,16 @@ public class ContactController {
 
     }
 
+
     @PutMapping("/{id}/read")
-public Contact markAsRead(
-        @PathVariable String id
-){
+    public Contact markAsRead(
 
-    return service.markAsRead(id);
+            @PathVariable String id
 
-}
+    ) {
+
+        return service.markAsRead(id);
+
+    }
 
 }
